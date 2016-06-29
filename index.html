@@ -1,189 +1,325 @@
----
-layout: default
----
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://vision.stanford.edu/teaching/cs231n/ -->
+<html lang="en" class="gr__vision_stanford_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stanford University CS231n: Convolutional Neural Networks for Visual Recognition</title>
 
-<div>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="./index_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./index_files/bootstrap-theme.min.css">
 
-  These notes accompany the Stanford CS class <a href="http://cs231n.stanford.edu/">CS231n: Convolutional Neural Networks for Visual Recognition</a>. 
-  <br>
-  For questions/concerns/bug reports regarding contact <a href="http://cs.stanford.edu/people/jcjohns/">Justin Johnson</a> regarding the assignments, or contact <a href="cs.stanford.edu/people/karpathy/">Andrej Karpathy</a> regarding the course notes. You can also submit a pull request directly to our <a href="https://github.com/cs231n/cs231n.github.io">git repo</a>.
-  <br>
-  We encourage the use of the <a href="https://hypothes.is/">hypothes.is</a> extension to annote comments and discuss these notes inline.
+  <!-- Google fonts -->
+  <link href="./index_files/css" rel="stylesheet" type="text/css">
+
+  <!-- Google Analytics -->
+  <script async="" src="./index_files/analytics.js"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-46895817-2', 'auto');
+  ga('send', 'pageview');
+  </script>
+
+  <link rel="stylesheet" type="text/css" href="./index_files/style.css">
+
+  <script src="./index_files/convnet-min.js"></script>
+  <script src="./index_files/convnet_demo.js"></script>
+
+  <script>
+  function page_loaded() {
+    $('#convask').click(function(){
+      $("#explain").slideToggle('fast');
+    })
+    start_convnet_demo();
+  }
+  </script>
+<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+.en-markup-crop-options {
+    top: 18px !important;
+    left: 50% !important;
+    margin-left: -100px !important;
+    width: 200px !important;
+    border: 2px rgba(255,255,255,.38) solid !important;
+    border-radius: 4px !important;
+}
+
+.en-markup-crop-options div div:first-of-type {
+    margin-left: 0px !important;
+}
+</style></head>
+
+<body onload="page_loaded()" data-gr-c-s-loaded="true">
+
+<div id="header">
+  <a href="http://vision.stanford.edu/">
+    <img src="./index_files/visionlablogo.png" style="height:50px; float: left; margin-left: 20px;">
+  </a>
+  <a href="http://stanford.edu/">
+    <img src="./index_files/stanfordlogo.jpg" style="height:50px; float: right; margin-right: 20px;">
+  </a>
+  <h1>CS231n: Convolutional Neural Networks for Visual Recognition</h1>
+  <div style="clear:both;"></div>
 </div>
 
-<div class="home">
-  <div class="materials-wrap">
-    
-    <div class="module-header">Winter 2016 Assignments</div>
+<div id="teaser">
+<div id="convnetvis"><div class="layer" id="inputlayer"><canvas class="actmap" width="64" height="64"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer" id="probsdiv"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><div class="pp" style="width: 53px;">airplane</div><div class="pp" style="width: 41px;">ship</div><div class="pp" style="width: 14px;">bird</div><div class="pp" style="width: 10px;">truck</div><div class="pp" style="width: 7px;">cat</div></div></div>
+<span class="glyphicon glyphicon-question-sign" id="convask"></span>
+<div id="demomsg">
+  *This network is running live in your browser
+</div>
+</div>
 
-    <div class="materials-item">
-      <a href="assignments2016/assignment1/">
-        Assignment #1: Image Classification, kNN, SVM, Softmax, Neural Network
-      </a>
-    </div>
 
-    <div class="materials-item">
-      <a href="assignments2016/assignment2/">
-        Assignment #2: Fully-Connected Nets, Batch Normalization, Dropout,
-        Convolutional Nets
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="assignments2016/assignment3/">
-        Assignment #3: Recurrent Neural Networks, Image Captioning,
-        Image Gradients, DeepDream
-      </a>
-    </div>
-
-    <!--
-    <div class="module-header">Winter 2015 Assignments</div>
-
-    <div class="materials-item">
-      <a href="assignment1/">
-        Assignment #1: Image Classification, kNN, SVM, Softmax
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="assignment2/">
-        Assignment #2: Neural Networks, ConvNets I
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="assignment3/">
-        Assignment #3: ConvNets II, Transfer Learning, Visualization
-      </a>
-    </div>
-  -->
-
-    <div class="module-header">Module 0: Preparation</div>
-
-    <div class="materials-item">
-      <a href="python-numpy-tutorial/">
-        Python / Numpy Tutorial
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="ipython-tutorial/">
-        IPython Notebook Tutorial
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="terminal-tutorial/">
-        Terminal.com Tutorial
-      </a>
-    </div>
-
-    <div class="materials-item">
-      <a href="aws-tutorial/">
-        AWS Tutorial
-      </a>
-    </div>
-
-	 <!-- hardcoding items here to force a specific order -->
-    <div class="module-header">Module 1: Neural Networks</div>
-
-    <div class="materials-item">
-      <a href="classification/">
-        Image Classification: Data-driven Approach, k-Nearest Neighbor, train/val/test splits
-      </a>
-      <div class="kw">
-        L1/L2 distances, hyperparameter search, cross-validation
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="linear-classify/">
-         Linear classification: Support Vector Machine, Softmax
-      </a>
-      <div class="kw">
-        parameteric approach, bias trick, hinge loss, cross-entropy loss, L2 regularization, web demo
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="optimization-1/">
-        Optimization: Stochastic Gradient Descent
-      </a>
-      <div class="kw">
-        optimization landscapes, local search, learning rate, analytic/numerical gradient
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="optimization-2/">
-        Backpropagation, Intuitions
-      </a>
-      <div class="kw">
-        chain rule interpretation, real-valued circuits, patterns in gradient flow
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="neural-networks-1/">
-          Neural Networks Part 1: Setting up the Architecture
-      </a>
-      <div class="kw">
-        model of a biological neuron, activation functions, neural net architecture, representational power
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="neural-networks-2/">
-          Neural Networks Part 2: Setting up the Data and the Loss
-      </a>
-      <div class="kw">
-          preprocessing, weight initialization, batch normalization, regularization (L2/dropout), loss functions
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="neural-networks-3/">
-        Neural Networks Part 3: Learning and Evaluation
-      </a>
-      <div class="kw">
-        gradient checks, sanity checks, babysitting the learning process, momentum (+nesterov), second-order methods, Adagrad/RMSprop, hyperparameter optimization, model ensembles
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="neural-networks-case-study/">
-          Putting it together: Minimal Neural Network Case Study
-      </a>
-      <div class="kw">
-        minimal 2D toy data example
-      </div>
-    </div>
-
-    <div class="module-header">Module 2: Convolutional Neural Networks</div>
-
-    <div class="materials-item">
-      <a href="convolutional-networks/">
-        Convolutional Neural Networks: Architectures, Convolution / Pooling Layers
-      </a>
-      <div class="kw">
-          layers, spatial arrangement, layer patterns, layer sizing patterns, AlexNet/ZFNet/VGGNet case studies, computational considerations
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="understanding-cnn/">
-        Understanding and Visualizing Convolutional Neural Networks
-      </a>
-      <div class="kw">
-        tSNE embeddings, deconvnets, data gradients, fooling ConvNets, human comparisons
-      </div>
-    </div>
-
-    <div class="materials-item">
-      <a href="transfer-learning/">
-        Transfer Learning and Fine-tuning Convolutional Neural Networks
-      </a>
-    </div>
- 
+<div class="container">
+  <div id="explain">
+    The Convolutional Neural Network in this example is classifying images live in your browser using Javascript, at about 10 milliseconds per image. It takes an input image and transforms it through a series of functions into class probabilities at the end. The transformed representations in this visualization can be losely thought of as the activations of the neurons along the way. The parameters of this function are learned with backpropagation on a dataset of (image, label) pairs. This particular network is classifying <a href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> images into one of 10 classes and was trained with <a href="http://cs.stanford.edu/people/karpathy/convnetjs/">ConvNetJS</a>. Its exact architecture is [conv-relu-conv-relu-pool]x3-fc-softmax, for a total of 17 layers and 7000 parameters. It uses 3x3 convolutions and 2x2 pooling regions. By the end of the class, you will know exactly what all these numbers mean.
   </div>
 </div>
+
+<div class="sechighlight">
+<div class="container sec">
+  <h2>Course Description</h2>
+
+  <div id="coursedesc">
+  Computer Vision has become ubiquitous in our society, with applications in search, image understanding, apps, mapping, medicine, drones, and self-driving cars. Core to many of these applications are visual recognition tasks such as image classification, localization and detection. Recent developments in neural network (aka “deep learning”) approaches have greatly advanced the performance of these state-of-the-art visual recognition systems. This course is a deep dive into details of the deep learning architectures with a focus on learning end-to-end models for these tasks, particularly image classification. During the 10-week course, students will learn to implement, train and debug their own neural networks and gain a detailed understanding of cutting-edge research in computer vision. The final assignment will involve training a multi-million parameter convolutional neural network and applying it on the largest image classification dataset (ImageNet). We will focus on teaching how to set up the problem of image recognition, the learning algorithms (e.g. backpropagation), practical engineering tricks for training and fine-tuning the networks and guide the students through hands-on assignments and a final course project. Much of the background and materials of this course will be drawn from the <a href="http://image-net.org/challenges/LSVRC/2014/index">ImageNet Challenge</a>.
+  </div>
+</div>
+</div>
+
+<div class="container sec">
+<div class="row">
+  <div class="col-md-4">
+    <h2>Course Instructors</h2>
+    <div class="instructor">
+      <a href="http://vision.stanford.edu/index.html">
+      <div class="instructorphoto"><img src="./index_files/feifei2.jpeg"></div>
+      <div>Fei-Fei Li</div>
+      </a>
+    </div>
+    <div class="instructor">
+      <a href="http://cs.stanford.edu/people/karpathy/">
+      <div class="instructorphoto"><img src="./index_files/andrej.jpg"></div>
+      <div>Andrej Karpathy</div>
+      </a>
+    </div>
+    <div class="instructor">
+      <a href="http://cs.stanford.edu/people/jcjohns/">
+      <div class="instructorphoto"><img src="./index_files/justin.jpeg"></div>
+      <div>Justin Johnson</div>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h2>Teaching Assistants</h2>
+    
+    <div class="instructor">
+      <a href="http://ai.stanford.edu/~syyeung/">
+      <div class="instructorphoto"><img src="./index_files/serena.jpg"></div>
+      <div>Serena Yeung</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <div class="instructorphoto"><img src="./index_files/subhasis.jpg"></div>
+      <div>Subhasis Das</div>
+    </div>
+
+    <div class="instructor">
+      <div class="instructorphoto"><img src="./index_files/song.jpg"></div>
+      <div>Song Han</div>
+    </div>
+
+     <div class="instructor">
+      <a href="http://www.albert.cm/">
+      <div class="instructorphoto"><img src="./index_files/albert.jpg"></div>
+      <div>Albert Haque</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <a href="http://web.stanford.edu/~rbharath/">
+      <div class="instructorphoto"><img src="./index_files/bharath.jpg"></div>
+      <div style="font-size:13px;">Bharath Ramsundar</div>
+      </a>
+    </div>
+    
+    <div class="instructor">
+      <a href="http://cs.stanford.edu/~hyhieu/">
+      <div class="instructorphoto"><img src="./index_files/hieu.jpg"></div>
+      <div>Hieu Pham</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <a href="http://web.stanford.edu/~ibello/">
+      <div class="instructorphoto"><img src="./index_files/irwan.jpg"></div>
+      <div>Irwan Bello</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <div class="instructorphoto"><img src="./index_files/namrata.jpg"></div>
+      <div>Namrata Anand</div>
+    </div>
+
+    <div class="instructor">
+      <a href="http://www.lanemcintosh.com/">
+      <div class="instructorphoto"><img src="./index_files/lane.jpg"></div>
+      <div>Lane McIntosh</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <a href="http://www.catherinedong.com/">
+      <div class="instructorphoto"><img src="./index_files/catherine.jpg"></div>
+      <div>Catherine Dong</div>
+      </a>
+    </div>
+
+    <div class="instructor">
+      <div class="instructorphoto"><img src="./index_files/kyle.jpg"></div>
+      <div>Kyle Griswold</div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="sechighlight">
+<div style="text-align:center; padding:40px 0px 40px 0px;">
+  <a href="/notes/" style="margin-right:50px">
+    <button type="button" class="btn btn-success btn-lg">Course Notes</button>
+  </a>
+  <a href="syllabus/">
+    <button type="button" class="btn btn-warning btn-lg">Detailed Syllabus</button>
+  </a>
+</div>
+</div>
+
+<div class="container sec">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Class Time and Location</h2>
+      Winter quater (January - March, 2016).<br>
+      Lecture: Monday, Wednesday 3:00-4:20<br>
+      Bishop Auditorium in Lathrop Building (<a href="http://campus-map.stanford.edu/?id=&amp;lat=37.4292007889&amp;lng=-122.167299117&amp;zoom=16&amp;srch=Bishop%20Auditorium">map</a>)
+    </div>
+    <div class="col-md-4">
+      <h2>Office Hours</h2>
+      Mon 9-11am in Gates 392 with Albert<br>
+      Mon 1-3pm in Fairchild D202 with Lane<br>
+      Mon 6-7pm in Gates 260 with Andrej<br>
+      Tue 10:25-11:25 in Huang (basement) with Song<br>
+      Tue 10:30-12:30 in Huang (basement) with Kyle<br>
+      Tue 5-7pm in Gates B24A with Namrata<br>
+      Wed 10-12pm in Gates 498 with Serena<br>
+      Wed 12-2pm in Gates 359 with Subhasis<br>
+      Wed 7-8pm in Gates 259 with Justin<br>
+      Thr 10:25-11:25am in Huang (basement) with Song<br>
+      Thr 3:30-5:30pm in Huang B007 with Irwan<br>
+      Thr 6-8pm in Gates 260 with Catherine<br>
+      Thr 1-3pm in Clark S361 with Bharath<br>
+      Fri 2-4pm in Gates B24A wtih Hieu<br>
+    </div>
+    <div class="col-md-4">
+      <h2>Grading Policy</h2>
+      Assignment #1: 15%<br>
+      Assignment #2: 15%<br>
+      Assignment #3: 15%<br>
+      Midterm: 15%<br>
+      Final Project: 40%<br>
+    </div>
+  </div>
+</div>
+
+<div class="container sec">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Course Discussions</h2>
+      Stanford students: <a href="https://piazza.com/class/iir8b0c69vf1rr">Piazza</a>
+      <br>
+      Online discussions for non-Stanford students: Reddit on <a href="http://www.reddit.com/r/cs231n/">r/cs231n</a> 
+      <br>
+      Our Twitter account: <a href="https://twitter.com/cs231n">@cs231n</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Assignment Details</h2>
+      See the <a href="assignments/">Assignment Page</a> for more details on how to hand in your assignments.
+    </div>
+    <div class="col-md-4">
+      <h2>Course Project Details</h2>
+      See the <a href="projects/">Project Page</a> for more details on the course project.
+    </div>
+  </div>
+</div>
+
+<div class="sechighlight">
+<div class="container sec">
+  <h2>Prerequisites</h2>
+  <ul>
+    <li><span class="spanh">Proficiency in Python, high-level familiarity in C/C++</span><br>All class assignments will be in Python (and use numpy) (we provide a tutorial <a href="http://cs231n.github.io/python-numpy-tutorial/">here</a> for those who aren't as familiar with Python), but some of the deep learning libraries we may look at later in the class are written in C++. If you have a lot of programming experience but in a different language (e.g. C/C++/Matlab/Javascript) you will probably be fine.</li>
+    <li><span class="spanh">College Calculus, Linear Algebra</span> (e.g. MATH 19 or 41, MATH 51)<br> You should be comfortable taking derivatives and understanding matrix vector operations and notation.</li>
+    <li><span class="spanh">Basic Probability and Statistics</span> (e.g. CS 109 or other stats course)<br>You should know basics of probabilities, gaussian distributions, mean, standard deviation, etc.</li>
+    <li><span class="spanh">Equivalent knowledge of CS229 (Machine Learning)</span><br> We will be formulating cost functions, taking derivatives and performing optimization with gradient descent.</li>
+  </ul>
+</div>
+</div>
+
+<div class="container sec">
+  <h2>FAQ</h2>
+  <div class="qqa">
+    <div class="qq">Is this the first time this class is offered?</div>
+    <div class="qa">This class was first offered in Winter 2015, and has been slightly tweaked for the current Winter 2016 offering. The class is designed to introduce students to deep learning in context of Computer Vision. We will place a particular emphasis on Convolutional Neural Networks, which are a class of deep learning models that have recently given dramatic improvements in various visual recognition tasks. You can read more about it in this recent <a href="http://bits.blogs.nytimes.com/2014/08/18/computer-eyesight-gets-a-lot-more-accurate/?_php=true&amp;_type=blogs&amp;_r=0">New York Times article</a>.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I follow along from the outside?</div>
+    <div class="qa">We'd be happy if you join us! We plan to make the course materials widely available: The assignments, course notes, lecture videos and slides will be available online. We won't be able to give you course credit.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I take this course on credit/no cred basis?</div>
+    <div class="qa">Yes. Credit will be given to those who would have otherwise earned a C- or above.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I audit or sit in?</div>
+    <div class="qa">In general we are very open to sitting-in guests if you are a member of the Stanford community (registered student, staff, and/or faculty). Out of courtesy, we would appreciate that you first email us or talk to the instructor after the first class you attend. If the class is too full and we're running out of space, we would ask that you please allow registered students to attend.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I work in groups for the Final Project?</div>
+    <div class="qa">Yes, in groups of up to two people.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">I have a question about the class. What is the best way to reach the course staff?</div>
+    <div class="qa">Stanford students please use an internal class forum on Piazza so that other students may benefit from your questions and our answers. If you have a personal matter, email us at the class mailing list <b>cs231n-winter1516-staff@lists.stanford.edu</b>.</div>
+  </div>
+  <div class="qqa">
+    <div class="qq">Can I combine the Final Project with another course?</div>
+    <div class="qa">Yes, you may. There are a couple of courses concurrently offered with CS231n that are natural choices, such as CS231a (Computer Vision, by Prof. Silvio Savarese) and CS228 (Graphical Models, by Prof. Stefano Ermon). If you are taking some combination of these classes, please speak to the instructors to receive permission to combine the Final Project assignments.</div>
+  </div>
+</div>
+
+<div class="sechighlight">
+<div id="footer">
+  <div id="footermsg">We can let you know when the course material starts to come online:</div>
+  <a href="https://docs.google.com/forms/d/1QCWD4N_DQIf6yxrFA9wDfEKs6lA5RD1zZBLc8UD-f38/viewform">
+    <button type="button" class="btn btn-primary btn-lg">Sign up for email alerts</button>
+  </a>
+
+  <div id="classicons">
+    <a href="https://twitter.com/cs231n">
+      <img src="./index_files/twitter.svg">
+    </a>
+  </div>
+
+</div>
+</div>
+
+<!-- jQuery and Boostrap -->
+<script src="./index_files/jquery.min.js"></script>
+<script src="./index_files/bootstrap.min.js"></script>
+
+
+
+</body></html>
