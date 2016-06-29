@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0043)http://vision.stanford.edu/teaching/cs231n/ -->
 <html lang="en" class="gr__vision_stanford_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stanford University CS231n: Convolutional Neural Networks for Visual Recognition</title>
+  <title>COMPSCI697L: Deep Learning</title>
 
   <!-- bootstrap -->
   <link rel="stylesheet" href="./index_files/bootstrap.min.css">
@@ -54,16 +53,17 @@
 <body onload="page_loaded()" data-gr-c-s-loaded="true">
 
 <div id="header">
-  <a href="http://vision.stanford.edu/">
-    <img src="./index_files/visionlablogo.png" style="height:50px; float: left; margin-left: 20px;">
+  <a href="http://vis-www.cs.umass.edu/">
+    <img src="./index_files/umasslogo.png" style="height:75px; float: left; margin-left: 20px;">
   </a>
-  <a href="http://stanford.edu/">
-    <img src="./index_files/stanfordlogo.jpg" style="height:50px; float: right; margin-right: 20px;">
+  <a href="http://www.umass.edu/">
+    <img src="./index_files/umasslogo.png" style="height:75px; float: right; margin-right: 20px;">
   </a>
-  <h1>CS231n: Convolutional Neural Networks for Visual Recognition</h1>
+  <h1>COMPSCI697L: Deep Learning</h1>
   <div style="clear:both;"></div>
 </div>
 
+<!--
 <div id="teaser">
 <div id="convnetvis"><div class="layer" id="inputlayer"><canvas class="actmap" width="64" height="64"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer" id="probsdiv"><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas><canvas class="actmap" width="32" height="32"></canvas></div><div class="layer"><div class="pp" style="width: 53px;">airplane</div><div class="pp" style="width: 41px;">ship</div><div class="pp" style="width: 14px;">bird</div><div class="pp" style="width: 10px;">truck</div><div class="pp" style="width: 7px;">cat</div></div></div>
 <span class="glyphicon glyphicon-question-sign" id="convask"></span>
@@ -72,12 +72,13 @@
 </div>
 </div>
 
-
 <div class="container">
   <div id="explain">
     The Convolutional Neural Network in this example is classifying images live in your browser using Javascript, at about 10 milliseconds per image. It takes an input image and transforms it through a series of functions into class probabilities at the end. The transformed representations in this visualization can be losely thought of as the activations of the neurons along the way. The parameters of this function are learned with backpropagation on a dataset of (image, label) pairs. This particular network is classifying <a href="http://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10</a> images into one of 10 classes and was trained with <a href="http://cs.stanford.edu/people/karpathy/convnetjs/">ConvNetJS</a>. Its exact architecture is [conv-relu-conv-relu-pool]x3-fc-softmax, for a total of 17 layers and 7000 parameters. It uses 3x3 convolutions and 2x2 pooling regions. By the end of the class, you will know exactly what all these numbers mean.
   </div>
 </div>
+
+-->
 
 <div class="sechighlight">
 <div class="container sec">
@@ -92,98 +93,22 @@
 <div class="container sec">
 <div class="row">
   <div class="col-md-4">
-    <h2>Course Instructors</h2>
+    <h2>Course Instructor</h2>
     <div class="instructor">
-      <a href="http://vision.stanford.edu/index.html">
-      <div class="instructorphoto"><img src="./index_files/feifei2.jpeg"></div>
-      <div>Fei-Fei Li</div>
-      </a>
-    </div>
-    <div class="instructor">
-      <a href="http://cs.stanford.edu/people/karpathy/">
-      <div class="instructorphoto"><img src="./index_files/andrej.jpg"></div>
-      <div>Andrej Karpathy</div>
-      </a>
-    </div>
-    <div class="instructor">
-      <a href="http://cs.stanford.edu/people/jcjohns/">
-      <div class="instructorphoto"><img src="./index_files/justin.jpeg"></div>
-      <div>Justin Johnson</div>
+      <a href="https://www.cs.umass.edu/~elm">
+      <div class="instructorphoto"><img src="./index_files/elm.jpg"></div>
+      <div>Erik Learned-Miller</div>
       </a>
     </div>
   </div>
   <div class="col-md-8">
-    <h2>Teaching Assistants</h2>
-    
+    <h2>Teaching Assistant</h2>
     <div class="instructor">
-      <a href="http://ai.stanford.edu/~syyeung/">
-      <div class="instructorphoto"><img src="./index_files/serena.jpg"></div>
-      <div>Serena Yeung</div>
+      <a href="https://www.cs.umass.edu/~hsu">
+      <div class="instructorphoto"><img src="./index_files/hsu.png"></div>
+      <div>Hang Su</div>
       </a>
     </div>
-
-    <div class="instructor">
-      <div class="instructorphoto"><img src="./index_files/subhasis.jpg"></div>
-      <div>Subhasis Das</div>
-    </div>
-
-    <div class="instructor">
-      <div class="instructorphoto"><img src="./index_files/song.jpg"></div>
-      <div>Song Han</div>
-    </div>
-
-     <div class="instructor">
-      <a href="http://www.albert.cm/">
-      <div class="instructorphoto"><img src="./index_files/albert.jpg"></div>
-      <div>Albert Haque</div>
-      </a>
-    </div>
-
-    <div class="instructor">
-      <a href="http://web.stanford.edu/~rbharath/">
-      <div class="instructorphoto"><img src="./index_files/bharath.jpg"></div>
-      <div style="font-size:13px;">Bharath Ramsundar</div>
-      </a>
-    </div>
-    
-    <div class="instructor">
-      <a href="http://cs.stanford.edu/~hyhieu/">
-      <div class="instructorphoto"><img src="./index_files/hieu.jpg"></div>
-      <div>Hieu Pham</div>
-      </a>
-    </div>
-
-    <div class="instructor">
-      <a href="http://web.stanford.edu/~ibello/">
-      <div class="instructorphoto"><img src="./index_files/irwan.jpg"></div>
-      <div>Irwan Bello</div>
-      </a>
-    </div>
-
-    <div class="instructor">
-      <div class="instructorphoto"><img src="./index_files/namrata.jpg"></div>
-      <div>Namrata Anand</div>
-    </div>
-
-    <div class="instructor">
-      <a href="http://www.lanemcintosh.com/">
-      <div class="instructorphoto"><img src="./index_files/lane.jpg"></div>
-      <div>Lane McIntosh</div>
-      </a>
-    </div>
-
-    <div class="instructor">
-      <a href="http://www.catherinedong.com/">
-      <div class="instructorphoto"><img src="./index_files/catherine.jpg"></div>
-      <div>Catherine Dong</div>
-      </a>
-    </div>
-
-    <div class="instructor">
-      <div class="instructorphoto"><img src="./index_files/kyle.jpg"></div>
-      <div>Kyle Griswold</div>
-    </div>
-
   </div>
 </div>
 </div>
@@ -239,11 +164,8 @@
   <div class="row">
     <div class="col-md-4">
       <h2>Course Discussions</h2>
-      Stanford students: <a href="https://piazza.com/class/iir8b0c69vf1rr">Piazza</a>
-      <br>
-      Online discussions for non-Stanford students: Reddit on <a href="http://www.reddit.com/r/cs231n/">r/cs231n</a> 
-      <br>
-      Our Twitter account: <a href="https://twitter.com/cs231n">@cs231n</a>
+      Participate discussions on <a href="https://piazza.com/class/iq1cd1t9ip9y1">Piazza</a>,<br> 
+      or use <a href="https://hypothes.is/">hypothes.is</a> extension to annote online course notes inline. 
     </div>
     <div class="col-md-4">
       <h2>Assignment Details</h2>
