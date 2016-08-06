@@ -1,0 +1,154 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+}
+footer {
+  padding: 30px 0;
+}
+#classdesc {
+  text-align: justify;
+  font-size: 115%;
+}
+.instructorphoto img {
+  width: 80px;
+  border-radius: 80px;
+  margin-bottom: 10px;
+}
+.instructor {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.navbar-custom {
+	background-color:#881c1c;
+    color:#ffffff;
+  	border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+  	color:#fff;
+  	padding-left:20px;
+  	padding-right:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+  background-color: #551111;
+}
+
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus, .navbar-custom .navbar-nav .open>a  {
+  background-color: #551111;
+}
+
+
+/* dropdown */
+.navbar-custom .navbar-nav .dropdown-menu  {
+  background-color: #551111;
+}
+.navbar-custom .navbar-nav .dropdown-menu>li>a  {
+  color: #fff;
+}
+.navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  {
+  color: #551111;
+}
+
+.navbar-custom .navbar-brand {
+  	color:#eeeeee;
+}
+.navbar-custom .navbar-toggle {
+  	background-color:#eeeeee;
+}
+.navbar-custom .icon-bar {
+  	background-color:#551111;
+}
+
+h2 {
+    color: #881c1c;
+    font-size: 165%;
+}
+
+.jumbotron h3 {
+  color: #63666a;
+  font-size: 145%; 
+}
+
+.jumbotron {
+  padding-top: 3px;
+  padding-bottom: 20px;
+}
+
+#announcetron {
+  padding-left: 30px;
+  padding-right: 0px;
+}
+
+#announcelist {
+  list-style-type: none;
+  position: relative;
+  left: -40px;
+  text-align: justify;
+  width: 245px;
+}
+
+.infoblk {
+  text-align: justify;
+}
+
+.btn-umass ,
+.btn-umass:active,
+.btn-umass:focus{
+  background-color: #881c1c;
+  border-color: #881c1c;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
