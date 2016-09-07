@@ -16,15 +16,8 @@ In this assignment you will practice putting together a simple image classificat
 - understand the differences and tradeoffs between these classifiers
 - get a basic understanding of performance improvements from using **higher-level representations** than raw pixels (e.g. color histograms, Histogram of Gradient (HOG) features)
 
-## Setup
-You can work on the assignment in one of two ways: locally on your own machine, or on a virtual machine through Terminal.com. 
-
-### Working in the cloud on Terminal
-
-Terminal has created a separate subdomain to serve our class, [www.stanfordterminalcloud.com](https://www.stanfordterminalcloud.com). Register your account there. The Assignment 1 snapshot can then be found [here](https://www.stanfordterminalcloud.com/snapshot/49f5a1ea15dc424aec19155b3398784d57c55045435315ce4f8b96b62819ef65). If you're registered in the class you can contact the TA (see Piazza for more information) to request Terminal credits for use on the assignment. Once you boot up the snapshot everything will be installed for you, and you'll be ready to start on your assignment right away. We've written a small tutorial on Terminal [here](/terminal-tutorial).
-
-### Working locally
-Get the code as a zip file [here](http://vision.stanford.edu/teaching/cs231n/winter1516_assignment1.zip). As for the dependencies:
+### Setup
+Get the code as a zip file [here](http://vis-www.cs.umass.edu/697l/asgns/assignment1.zip). As for the dependencies:
 
 **[Option 1] Use Anaconda:**
 The preferred approach for installing all the assignment dependencies is to use [Anaconda](https://www.continuum.io/downloads), which is a Python distribution that includes many of the most popular Python packages for science, math, engineering and data analysis. Once you install it you can skip all mentions of requirements and you're ready to go directly to working on the assignment.
@@ -47,43 +40,41 @@ Once you have the starter code, you will need to download the CIFAR-10 dataset.
 Run the following from the `assignment1` directory:
 
 ```bash
-cd cs231n/datasets
+cd datasets
 ./get_datasets.sh
 ```
 
-**Start IPython:**
-After you have the CIFAR-10 data, you should start the IPython notebook server from the
-`assignment1` directory. If you are unfamiliar with IPython, you should read our
-[IPython tutorial](/ipython-tutorial).
+**Start Jupyter Notebook:**
+After you have the CIFAR-10 data, you should start the Jupyter Notebook server from the
+`assignment1` directory. If you are unfamiliar with Jupyter, you should read our
+[Jupyter tutorial](/notes/jupyter-tutorial/).
 
 **NOTE:** If you are working in a virtual environment on OSX, you may encounter
-errors with matplotlib due to the [issues described here](http://matplotlib.org/faq/virtualenv_faq.html). You can work around this issue by starting the IPython server using the `start_ipython_osx.sh` script from the `assignment1` directory; the script assumes that your virtual environment is named `.env`.
+errors with matplotlib due to the [issues described here](http://matplotlib.org/faq/virtualenv_faq.html). You can work around this issue by starting the Jupyter server using the `start_jupyter_osx.sh` script from the `assignment1` directory; the script assumes that your virtual environment is named `.env`.
 
-### Submitting your work:
+### Submitting your work
 Whether you work on the assignment locally or using Terminal, once you are done
-working run the `collectSubmission.sh` script; this will produce a file called
-`assignment1.zip`. Upload this file to your dropbox on
-[the coursework](https://coursework.stanford.edu/portal/site/W16-CS-231N-01/)
-page for the course.
+working run the `collectSubmission.sh` script from the `assignment1` directory; this will produce a file called
+`assignment1.zip`. Upload this file to Moodle before the assignment is due.
 
 ### Q1: k-Nearest Neighbor classifier (20 points)
 
-The IPython Notebook **knn.ipynb** will walk you through implementing the kNN classifier.
+The Jupyter Notebook **knn.ipynb** will walk you through implementing the kNN classifier.
 
 ### Q2: Training a Support Vector Machine (25 points)
 
-The IPython Notebook **svm.ipynb** will walk you through implementing the SVM classifier.
+The Jupyter Notebook **svm.ipynb** will walk you through implementing the SVM classifier.
 
 ### Q3: Implement a Softmax classifier (20 points)
 
-The IPython Notebook **softmax.ipynb** will walk you through implementing the Softmax classifier.
+The Jupyter Notebook **softmax.ipynb** will walk you through implementing the Softmax classifier.
 
 ### Q4: Two-Layer Neural Network (25 points)
-The IPython Notebook **two\_layer\_net.ipynb** will walk you through the implementation of a two-layer neural network classifier.
+The Jupyter Notebook **two\_layer\_net.ipynb** will walk you through the implementation of a two-layer neural network classifier.
 
 ### Q5: Higher Level Representations: Image Features (10 points)
 
-The IPython Notebook **features.ipynb** will walk you through this exercise, in which you will examine the improvements gained by using higher-level representations as opposed to using raw pixel values.
+The Jupyter Notebook **features.ipynb** will walk you through this exercise, in which you will examine the improvements gained by using higher-level representations as opposed to using raw pixel values.
 
 ### Q6: Cool Bonus: Do something extra! (+10 points)
 
