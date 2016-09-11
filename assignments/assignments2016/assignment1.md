@@ -53,9 +53,9 @@ After you have the CIFAR-10 data, you should start the Jupyter Notebook server f
 errors with matplotlib due to the [issues described here](http://matplotlib.org/faq/virtualenv_faq.html). You can work around this issue by starting the Jupyter server using the `start_jupyter_osx.sh` script from the `assignment1` directory; the script assumes that your virtual environment is named `.env`.
 
 ### Submitting your work
-Whether you work on the assignment locally or using Terminal, once you are done
-working run the `collectSubmission.sh` script from the `assignment1` directory; this will produce a file called
-`assignment1.zip`. Upload this file to Moodle before the assignment is due.
+
+To make sure everything is working properly, **remember to do a clean run ("Kernel -> Restart & Run All") after you finish work for each notebook** and submit the final version with all the outputs. 
+Whether you work on the assignment locally or using Terminal, once you are done working run the `collectSubmission.sh` script from the `assignment1` directory; this will produce a file called `assignment1.zip`. Upload this file to Moodle before the assignment is due. 
 
 ### Q1: k-Nearest Neighbor classifier (20 points)
 
