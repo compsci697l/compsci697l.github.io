@@ -73,4 +73,6 @@ After you have modified a Jupyter notebook for one of the assignments by
 modifying or executing some of its cells, remember to **save your changes!**
 
 This has only been a brief introduction to Jupyter Notebook, but it should
-be enough to get you up and running on the assignments for this course.
+be enough to get you up and running on the assignments for this course. Check out 
+[these notebooks](http://nbviewer.jupyter.org/github/jupyter/notebook/tree/master/docs/source/examples/Notebook/) 
+if you want to learn more. 
