@@ -19,40 +19,14 @@ are as follows:
 - understand the architecture of **Convolutional Neural Networks** and train
   gain experience with training these models on data
 
-## Setup
-You can work on the assignment in one of two ways: locally on your own machine,
-or on a virtual machine through Terminal.com. 
-
-### Working in the cloud on Terminal
-
-Terminal has created a separate subdomain to serve our class,
-[www.stanfordterminalcloud.com](https://www.stanfordterminalcloud.com). Register
-your account there. The Assignment 2 snapshot can then be found [HERE](https://www.stanfordterminalcloud.com/snapshot/6c95ca2c9866a962964ede3ea5813d4c2410ba48d92cf8d11a93fbb13e08b76a). If you are
-registered in the class you can contact the TA (see Piazza for more information)
-to request Terminal credits for use on the assignment. Once you boot up the
-snapshot everything will be installed for you, and you will be ready to start on
-your assignment right away. We have written a small tutorial on Terminal
-[here](/terminal-tutorial).
-
-### Working locally
-Get the code as a zip file
-[here](http://vision.stanford.edu/teaching/cs231n/winter1516_assignment2.zip).
-As for the dependencies:
+### Setup
+Get the code as a zip file [here](http://vis-www.cs.umass.edu/697l/asgns/assignment2.zip). As for the dependencies:
 
 **[Option 1] Use Anaconda:**
-The preferred approach for installing all the assignment dependencies is to use
-[Anaconda](https://www.continuum.io/downloads), which is a Python distribution
-that includes many of the most popular Python packages for science, math,
-engineering and data analysis. Once you install it you can skip all mentions of
-requirements and you are ready to go directly to working on the assignment.
+The preferred approach for installing all the assignment dependencies is to use [Anaconda](https://www.continuum.io/downloads), which is a Python distribution that includes many of the most popular Python packages for science, math, engineering and data analysis. Once you install it you can skip all mentions of requirements and you're ready to go directly to working on the assignment.
 
 **[Option 2] Manual install, virtual environment:**
-If you do not want to use Anaconda and want to go with a more manual and risky
-installation route you will likely want to create a
-[virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
-for the project. If you choose not to use a virtual environment, it is up to you
-to make sure that all dependencies for the code are installed globally on your
-machine. To set up a virtual environment, run the following:
+If you'd like to (instead of Anaconda) go with a more manual and risky installation route you will likely want to create a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for the project. If you choose not to use a virtual environment, it is up to you to make sure that all dependencies for the code are installed globally on your machine. To set up a virtual environment, run the following:
 
 ```bash
 cd assignment2
@@ -69,40 +43,33 @@ Once you have the starter code, you will need to download the CIFAR-10 dataset.
 Run the following from the `assignment2` directory:
 
 ```bash
-cd cs231n/datasets
+cd datasets
 ./get_datasets.sh
 ```
 
-**Compile the Cython extension:** Convolutional Neural Networks require a very
+**Compile the Cython extension:** 
+Convolutional Neural Networks require a very
 efficient implementation. We have implemented of the functionality using
 [Cython](http://cython.org/); you will need to compile the Cython extension
-before you can run the code. From the `cs231n` directory, run the following
+before you can run the code. From the `assignment2/asgn2` directory, run the following
 command:
 
 ```bash
 python setup.py build_ext --inplace
 ```
 
-**Start IPython:**
-After you have the CIFAR-10 data, you should start the IPython notebook server
-from the `assignment2` directory. If you are unfamiliar with IPython, you should 
-read our [IPython tutorial](/ipython-tutorial).
+**Start Jupyter Notebook:**
+After you have the CIFAR-10 data, you should start the Jupyter Notebook server from the
+`assignment2` directory. If you are unfamiliar with Jupyter, you should read our
+[Jupyter tutorial](/notes/jupyter-tutorial/).
 
 **NOTE:** If you are working in a virtual environment on OSX, you may encounter
-errors with matplotlib due to the
-[issues described here](http://matplotlib.org/faq/virtualenv_faq.html).
-You can work around this issue by starting the IPython server using the
-`start_ipython_osx.sh` script from the `assignment2` directory; the script
-assumes that your virtual environment is named `.env`.
+errors with matplotlib due to the [issues described here](http://matplotlib.org/faq/virtualenv_faq.html). You can work around this issue by starting the Jupyter server using the `start_jupyter_osx.sh` script from the `assignment2` directory; the script assumes that your virtual environment is named `.env`.
 
+### Submitting your work
 
-### Submitting your work:
-Whether you work on the assignment locally or using Terminal, once you are done
-working run the `collectSubmission.sh` script; this will produce a file called
-`assignment2.zip`. Upload this file under the Assignments tab on
-[the coursework](https://coursework.stanford.edu/portal/site/W15-CS-231N-01/)
-page for the course.
-
+To make sure everything is working properly, **remember to do a clean run ("Kernel -> Restart & Run All") after you finish work for each notebook** and submit the final version with all the outputs. 
+Whether you work on the assignment locally or using Terminal, once you are done working run the `collectSubmission.sh` script from the `assignment2` directory; this will produce a file called `assignment2.zip`. Upload this file to Moodle before the assignment is due. 
 
 ### Q1: Fully-connected Neural Network (30 points)
 The IPython notebook `FullyConnectedNets.ipynb` will introduce you to our
