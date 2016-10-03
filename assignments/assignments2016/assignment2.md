@@ -69,7 +69,7 @@ errors with matplotlib due to the [issues described here](http://matplotlib.org/
 ### Submitting your work
 
 To make sure everything is working properly, **remember to do a clean run ("Kernel -> Restart & Run All") after you finish work for each notebook** and submit the final version with all the outputs. 
-Whether you work on the assignment locally or using Terminal, once you are done working run the `collectSubmission.sh` script from the `assignment2` directory; this will produce a file called `assignment2.zip`. Upload this file to Moodle before the assignment is due. 
+Once you are done working, zip all the code and notebooks in a single file and upload it to Moodle. On Linux or macOS you can run the provided `collectSubmission.sh` script from `assignment2/` to produce a file `assignment2.zip`.
 
 ### Q1: Fully-connected Neural Network (30 points)
 The Jupyter notebook `FullyConnectedNets.ipynb` will introduce you to our
