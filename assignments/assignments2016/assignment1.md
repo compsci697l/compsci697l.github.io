@@ -55,7 +55,7 @@ errors with matplotlib due to the [issues described here](http://matplotlib.org/
 ### Submitting your work
 
 To make sure everything is working properly, **remember to do a clean run ("Kernel -> Restart & Run All") after you finish work for each notebook** and submit the final version with all the outputs. 
-Whether you work on the assignment locally or using Terminal, once you are done working run the `collectSubmission.sh` script from the `assignment1` directory; this will produce a file called `assignment1.zip`. Upload this file to Moodle before the assignment is due. 
+Once you are done working, zip all the code and notebooks in a single file and upload it to Moodle. On Linux or macOS you can run the provided `collectSubmission.sh` script from `assignment1/` to produce a file `assignment1.zip`. 
 
 ### Q1: k-Nearest Neighbor classifier (20 points)
 
