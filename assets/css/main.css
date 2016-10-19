@@ -62,6 +62,9 @@ a:visited { color: #205caa; }
 .materials-item:nth-child(even) {
   background-color: #f7f6f1;
 }
+.materials-item-single {
+  border-bottom: 1px solid #CCC;
+}
 
 /* Custom CSS rules for content */
 
