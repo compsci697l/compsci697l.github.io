@@ -5,8 +5,6 @@ permalink: /notes/understanding-cnn/
 
 <a name='vis'></a>
 
-(this page is currently in draft form)
-
 ## Visualizing what ConvNets learn
 
 Several approaches for understanding and visualizing Convolutional Networks have been developed in the literature, partly as a response the common criticism that the learned features in a Neural Network are not interpretable. In this section we briefly survey some of these approaches and related work.
