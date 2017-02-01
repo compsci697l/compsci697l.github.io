@@ -16,6 +16,10 @@ footer {
   text-align: justify;
   font-size: 115%;
 }
+#statement {
+  text-align: justify;
+  font-size: 90%;
+}
 .instructorphoto img {
   width: 80px;
   border-radius: 80px;
@@ -26,6 +30,10 @@ footer {
   width: 120px;
   text-align: center;
   margin-right: 20px;
+}
+.instructor2 {
+  display: inline-block;
+  text-align: center;
 }
 
 /*
